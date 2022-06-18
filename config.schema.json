@@ -101,7 +101,7 @@
                         "on_method": {
                             "title": "On Method",
                             "type": "string",
-                            "placeholder": "GET",
+                            "placeholder": "POST",
                             "required": false
                         },
                         "on_body": {
@@ -125,7 +125,7 @@
                         "off_method": {
                             "title": "Off Method",
                             "type": "string",
-                            "placeholder": "GET",
+                            "placeholder": "POST",
                             "required": false
                         },
                         "off_body": {
@@ -178,7 +178,7 @@
                         "push_method": {
                             "title": "Push Method",
                             "type": "string",
-                            "placeholder": "GET",
+                            "placeholder": "POST",
                             "required": false
                         },
                         "push_body": {
