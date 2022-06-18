@@ -1,36 +1,41 @@
 {
-  "name": "homebridge-discord",
-  "version": "1.0",
+  "private": true,
   "displayName": "Homebridge Discord",
-  "description": "A http plugin with support of Discord webhooks for Homebridge: https://github.com/homebridge/homebridge",
-  "license": "GPL-3.0",
-  "keywords": [
-    "homebridge-plugin",
-    "homebridge",
-    "plugin",
-    "http",
-    "webhook",
-    "smart",
-    "homekit",
-    "siri"
-  ],
+  "name": "homebridge-discord",
+  "version": "1.0.0",
+  "description": "Posts to discord webhooks.",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tecdude/homebridge-discord.git"
+    "url": "git://github.com/tecdude/homebridge-discord.git"
   },
   "bugs": {
-    "url": "https://github.com/tecdude/homebridge-discord/issues"
+    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
   },
   "engines": {
-    "node": ">=9.11.2",
-    "homebridge": ">=0.3.0"
+    "node": ">=14.18.1",
+    "homebridge": ">=1.3.5"
   },
-  "dependencies": {
-    "http-auth": "^3.2.4",
-    "node-persist": "2.0.x",
-    "request": "^2.88.2",
-    "selfsigned": "^2.0.1"
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint src/**.ts --max-warnings=0",
+    "watch": "npm run build && npm link && nodemon",
+    "build": "rimraf ./dist && tsc",
+    "prepublishOnly": "npm run lint && npm run build"
   },
-  "homepage": "https://github.com/tecdude/homebridge-diiscord#readme",
-  "author": "tecdude"
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^16.10.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "homebridge": "^1.3.5",
+    "nodemon": "^2.0.13",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  }
 }
