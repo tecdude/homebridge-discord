@@ -3,7 +3,7 @@ A http plugin with support of webhooks for [Homebridge](https://github.com/homeb
 
 Currently supports switches and push buttons.
 
-## Thanks to [This Project](https://github.com/benzman81/homebridge-http-webhooks) of which a good amount of this code came from.
+## Thanks to [this project](https://github.com/benzman81/homebridge-http-webhooks) of which a good amount of this code came from.
 
 # Installation
 1. Install homebridge using: `npm install -g homebridge`
