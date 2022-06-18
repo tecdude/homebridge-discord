@@ -1,0 +1,504 @@
+{
+  "pluginAlias": "Discord",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "A `http` plugin with support of webhooks for homebridge.\n\nThe plugin gets its states from any system that is calling the url to trigger a state change.\n\nCurrently supports `contact`, `motion`, `occupancy`, `smoke`, `switches`, `push buttons`, `lights` (only on/off and brightness), `temperature`, `humidity`, `thermostats`, `co2sensors`, and `leak` sensors.",
+  "footerDisplay": "Visit the Project [Readme](https://github.com/benzman81/homebridge-http-webhooks#readme) for more details.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "webhook_port": {
+        "title": "Webhook Port",
+        "type": "string",
+        "placeholder": "51828",
+        "required": true,
+        "typeahead": {
+          "source": [
+            "51828"
+          ]
+        }
+      },
+      "webhook_listen_host": {
+        "title": "Webhook Listen Host",
+        "type": "string",
+        "placeholder": "::",
+        "required": false
+      },
+      "webhook_enable_cors": {
+        "title": "Webhook enable CORS",
+        "type": "boolean",
+        "placeholder": false,
+        "required": false
+      },
+      "cache_directory": {
+        "title": "Cache Directory",
+        "type": "string",
+        "placeholder": "./.node-persist/storage",
+        "required": false
+      },
+      "http_auth_user": {
+        "title": "HTTP Auth User",
+        "type": "string",
+        "placeholder": "admin",
+        "required": false
+      },
+      "http_auth_pass": {
+        "title": "HTTP Auth Pass",
+        "type": "string",
+        "placeholder": "admin",
+        "required": false
+      },
+      "https": {
+        "title": "HTTPS",
+        "type": "boolean",
+        "placeholder": false,
+        "required": false
+      },
+      "https_keyfile": {
+        "title": "HTTPS Key Location",
+        "type": "string",
+        "placeholder": "/pathToKeyFile/server.key",
+        "required": false
+      },
+      "https_certfile": {
+        "title": "HTTPS Cert Location",
+        "type": "string",
+        "placeholder": "/pathToKeyFile/server.cert",
+        "required": false
+      },
+      "switches": {
+        "type": "array",
+        "title": "Switches",
+        "description": "Turn on and off switches by triggering a URL from any system.",
+        "items": {
+          "title": "Switches",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "string",
+              "placeholder": "Switch1",
+              "required": false
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Switch 1",
+              "required": false
+            },
+            "rejectUnauthorized": {
+              "title": "Reject Unauthorized SSL Certificate",
+              "type": "boolean",
+              "placeholder": true,
+              "required": false
+            },
+            "on_url": {
+              "title": "On URL",
+              "type": "string",
+              "placeholder": "your url to switch the switch on",
+              "required": false
+            },
+            "on_method": {
+              "title": "On Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "on_body": {
+              "title": "On Body",
+              "type": "string",
+              "placeholder": "{ \"on\" : true }",
+              "required": false
+            },
+            "on_headers": {
+              "title": "On Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            },
+            "off_url": {
+              "title": "Off URL",
+              "type": "string",
+              "placeholder": "your url to switch the switch off",
+              "required": false
+            },
+            "off_method": {
+              "title": "Off Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "off_body": {
+              "title": "Off Body",
+              "type": "string",
+              "placeholder": "{ \"on\": false }",
+              "required": false
+            },
+            "off_headers": {
+              "title": "Off Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            }
+          }
+        }
+      },
+      "pushbuttons": {
+        "type": "array",
+        "title": "Sensors",
+        "description": "Push Buttons by triggerring a URL from any system. The button will be released automatically.",
+        "items": {
+          "title": "Sensors",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "string",
+              "placeholder": "pushbutton1",
+              "required": false
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Push Button 1",
+              "required": false
+            },
+            "rejectUnauthorized": {
+              "title": "Reject Unauthorized SSL Certificate",
+              "type": "boolean",
+              "placeholder": true,
+              "required": false
+            },
+            "push_url": {
+              "title": "Push URL",
+              "type": "string",
+              "placeholder": "your url to be called on push",
+              "required": false
+            },
+            "push_method": {
+              "title": "Push Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "push_body": {
+              "title": "Push Body",
+              "type": "string",
+              "placeholder": "{ \"push\": true }",
+              "required": false
+            },
+            "push_headers": {
+              "title": "Push Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            }
+          }
+        }
+      },
+      "lights": {
+        "type": "array",
+        "title": "Lights",
+        "description": "Turn on and off Lights by triggering a URL from any system.",
+        "items": {
+          "title": "Lights",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "string",
+              "placeholder": "light1",
+              "required": false
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Light 1",
+              "required": false
+            },
+            "rejectUnauthorized": {
+              "title": "Reject Unauthorized SSL Certificate",
+              "type": "boolean",
+              "placeholder": true,
+              "required": false
+            },
+            "on_url": {
+              "title": "On URL",
+              "type": "string",
+              "placeholder": "your url to switch the light on",
+              "required": false
+            },
+            "on_method": {
+              "title": "On Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "on_body": {
+              "title": "On Body",
+              "type": "string",
+              "placeholder": "{ \"on\" : true }",
+              "required": false
+            },
+            "on_headers": {
+              "title": "On Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            },
+            "off_url": {
+              "title": "Off URL",
+              "type": "string",
+              "placeholder": "your url to switch the light off",
+              "required": false
+            },
+            "off_method": {
+              "title": "Off Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "off_body": {
+              "title": "Off Body",
+              "type": "string",
+              "placeholder": "{ \"on\": false }",
+              "required": false
+            },
+            "off_headers": {
+              "title": "Off Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            },
+            "brightness_url": {
+              "title": "Brightness URL",
+              "type": "string",
+              "placeholder": "your url to change the light brightness",
+              "required": false
+            },
+            "brightness_method": {
+              "title": "Brightness Method",
+              "type": "string",
+              "placeholder": "GET",
+              "required": false
+            },
+            "brightness_body": {
+              "title": "Brightness Body",
+              "type": "string",
+              "placeholder": "{ \"on\" : %statusPlaceholder, \"bri\" : %brightnessPlaceholder}",
+              "required": false
+            },
+            "brightness_headers": {
+              "title": "Brightness Headers",
+              "type": "string",
+              "placeholder": "{\"Authorization\": \"Bearer ABCDEFGH\", \"Content-Type\": \"application/json\"}",
+              "required": false
+            },
+            "brightness_factor": {
+              "title": "Brightness Factor",
+              "type": "number",
+              "placeholder": 2.55,
+              "required": false,
+              "typeahead": {
+                "source": [
+                  2.55
+                ]
+              }
+            }
+          }
+        }
+      },
+      "statelessswitches": {
+        "type": "array",
+        "title": "Stateless Switches",
+        "description": "Stateless switches requires 3 parameters accessoryId, buttonName and the event to trigger: Single press = 0, Double press = 1, Long press = 2.",
+        "items": {
+          "title": "Stateless Switches",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "string",
+              "placeholder": "statelessswitches1",
+              "required": false
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Stateless Switch 1",
+              "required": false
+            },
+            "buttons": {
+              "type": "array",
+              "title": "Buttons",
+              "items": {
+                "title": "Buttons",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "placeholder": "Button1",
+                    "required": false
+                  },
+                  "double_press": {
+                    "title": "Double Press",
+                    "type": "boolean",
+                    "required": false
+                  },
+                  "long_press": {
+                    "title": "Long Press",
+                    "type": "boolean",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  "layout": [
+    {
+      "type": "fieldset",
+      "title": "Webhook Settings",
+      "expandable": true,
+      "expanded": false,
+      "items": [
+        {
+          "title": "Webhook Settings",
+          "type": "array",
+          "orderable": false,
+          "items": [
+            "webhook_port",
+            "webhook_listen_host",
+            "cache_directory",
+            "http_auth_user",
+            "http_auth_pass",
+            "https",
+            "https_keyfile",
+            "https_certfile"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "title": "Webhook Devices",
+      "expandable": true,
+      "expanded": false,
+      "items": [
+        {
+          "type": "section",
+          "title": "Sensors",
+          "expandable": true,
+          "expanded": false,
+          "items": [
+            {
+              "title": "Sensors",
+              "type": "array",
+              "orderable": false,
+              "items": [
+                "sensors[].id",
+                "sensors[].name",
+                "sensors[].type",
+                "sensors[].autoRelease",
+                "sensors[].autoReleaseTime"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Switches",
+          "expandable": true,
+          "expanded": false,
+          "items": [
+            {
+              "title": "Switches",
+              "type": "array",
+              "orderable": false,
+              "items": [
+                "switches[].id",
+                "switches[].name",
+                "switches[].rejectUnauthorized",
+                "switches[].on_url",
+                "switches[].on_method",
+                "switches[].on_body",
+                "switches[].on_headers",
+                "switches[].off_url",
+                "switches[].off_method",
+                "switches[].off_body",
+                "switches[].off_headers"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Push Button",
+          "expandable": true,
+          "expanded": false,
+          "items": [
+            {
+              "title": "Push Button",
+              "type": "array",
+              "orderable": false,
+              "items": [
+                "pushbuttons[].id",
+                "pushbuttons[].name",
+                "pushbuttons[].rejectUnauthorized",
+                "pushbuttons[].push_url",
+                "pushbuttons[].push_method",
+                "pushbuttons[].push_body",
+                "pushbuttons[].push_headers"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Stateless Switches",
+          "expandable": true,
+          "expanded": false,
+          "items": [
+            {
+              "title": "Stateless Switches",
+              "type": "array",
+              "orderable": false,
+              "items": [
+                {
+                  "type": "section",
+                  "title": "Stateless Switches",
+                  "expandable": true,
+                  "expanded": true,
+                  "items": [
+                    "statelessswitches[].id",
+                    "statelessswitches[].name",
+                    {
+                      "type": "section",
+                      "title": "Buttons",
+                      "expandable": true,
+                      "expanded": true,
+                      "items": [
+                        {
+                          "title": "Buttons",
+                          "type": "array",
+                          "orderable": false,
+                          "items": [
+                            "statelessswitches[].buttons[].name",
+                            "statelessswitches[].buttons[].double_press",
+                            "statelessswitches[].buttons[].long_press"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
