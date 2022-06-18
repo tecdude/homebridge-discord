@@ -34,7 +34,7 @@ class ExampleSwitchAccessory {
         .onGet(this.handleOnGet.bind(this))
         .onSet(this.handleOnSet.bind(this));
 
-  }
+  };
 
   /**
    * Handle requests to get the current value of the "On" characteristic
