@@ -3,7 +3,7 @@
     "pluginType": "platform",
     "singular": true,
     "headerDisplay": "A `http` plugin with support of webhooks for homebridge.\n\nThe plugin gets its states from any system that is calling the url to trigger a state change.\n\nCurrently supports `switches` and `push buttons`.",
-    "footerDisplay": "Visit the Project [Readme](https://github.com/tecdue/homebridge-discord#readme) for more details.",
+    "footerDisplay": "Visit the Project [Readme](https://github.com/tecdude/homebridge-discord#readme) for more details.",
     "schema": {
         "type": "object",
         "properties": {
