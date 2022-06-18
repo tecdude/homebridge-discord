@@ -1,5 +1,5 @@
 # homebridge-discord
-A http plugin with support of webhooks for [Homebridge](https://github.com/nfarina/homebridge).
+A http plugin with support of webhooks for [Homebridge](https://github.com/homebridge/homebridge).
 
 The plugin gets its states from any system that is calling the url to trigger a state change.
 
