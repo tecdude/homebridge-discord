@@ -3,7 +3,7 @@ var HttpWebHookPushButtonAccessory = require('./src/homekit/accessories/HttpWebH
 var HttpWebHookStatelessSwitchAccessory = require('./src/homekit/accessories/HttpWebHookStatelessSwitchAccessory');
 
 module.exports = function(homebridge) {
-  homebridge.registerAccessory("homebridge-http-webhooks", "HttpWebHookSwitch", HttpWebHookSwitchAccessory);
-  homebridge.registerAccessory("homebridge-http-webhooks", "HttpWebHookPushButton", HttpWebHookPushButtonAccessory);
-homebridge.registerAccessory("homebridge-http-webhooks", "HttpWebHookStatelessSwitch", HttpWebHookStatelessSwitchAccessory);
+  homebridge.registerAccessory("homebridge-discord", "HttpWebHookSwitch", HttpWebHookSwitchAccessory);
+  homebridge.registerAccessory("homebridge-discord", "HttpWebHookPushButton", HttpWebHookPushButtonAccessory);
+homebridge.registerAccessory("homebridge-discord", HttpWebHookStatelessSwitchAccessory);
 };
